@@ -8,43 +8,43 @@ import javax.annotation.Generated;
 @Generated("org.jsonschema2pojo")
 public class List {
 
-    private int t;
-    private int l;
+    private long t;
+    private double l;
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
      * 
      * @return
-     *     The t
+     *     The timestamp
      */
-    public int getT() {
+    public long getT() {
         return t;
     }
 
     /**
      * 
      * @param t
-     *     The t
+     *     The timetamp
      */
-    public void setT(int t) {
+    public void setT(long t) {
         this.t = t;
     }
 
     /**
      * 
      * @return
-     *     The l
+     *     The latency
      */
-    public int getL() {
+    public double getL() {
         return l;
     }
 
     /**
      * 
      * @param l
-     *     The l
+     *     The latency
      */
-    public void setL(int l) {
+    public void setL(double l) {
         this.l = l;
     }
 
