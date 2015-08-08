@@ -3,9 +3,9 @@ package com.iloire.watchmen;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.iloire.watchmen.adapters.ServiceReportAdapter;
 import com.iloire.watchmen.models.ServiceReport;
 
 import java.util.List;
@@ -23,7 +23,6 @@ public class ServicesList extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         System.out.println("ServicesList.onCreate");
         super.onCreate(savedInstanceState);
-
         setContentView(R.layout.homescreen);
 
         RestAdapter restAdapter = new RestAdapter.Builder()
@@ -36,13 +35,8 @@ public class ServicesList extends AppCompatActivity {
         watchmenService.getServices(new Callback<List<ServiceReport>>() {
             @Override
             public void success(List<ServiceReport> serviceReports, Response response) {
-                String [] titles = new String[serviceReports.size()];
-                for (int i = 0; i < serviceReports.size(); i++) {
-                    titles[i] = serviceReports.get(i).getService().getName();
-                }
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(c, R.layout.service_list_item, titles);
+                ServiceReportAdapter adapter = new ServiceReportAdapter(c, serviceReports);
                 ListView listView = (ListView) findViewById(R.id.listView);
-                System.out.println(adapter);
                 listView.setAdapter(adapter);
             }
 
