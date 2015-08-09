@@ -14,7 +14,7 @@ public class Status {
     private Last24Hours last24Hours;
     private LastWeek lastWeek;
     private LastHour lastHour;
-    private List<LatestOutage> latestOutages = new ArrayList<LatestOutage>();
+    private List<Outage> latestOutages = new ArrayList<Outage>();
     private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
@@ -94,7 +94,7 @@ public class Status {
      * @return
      *     The latestOutages
      */
-    public List<LatestOutage> getLatestOutages() {
+    public List<Outage> getLatestOutages() {
         return latestOutages;
     }
 
@@ -103,7 +103,7 @@ public class Status {
      * @param latestOutages
      *     The latestOutages
      */
-    public void setLatestOutages(List<LatestOutage> latestOutages) {
+    public void setLatestOutages(List<Outage> latestOutages) {
         this.latestOutages = latestOutages;
     }
 
