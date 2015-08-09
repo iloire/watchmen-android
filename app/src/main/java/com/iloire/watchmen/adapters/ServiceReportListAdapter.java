@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.iloire.watchmen.R;
+import com.iloire.watchmen.Utilities.Time;
 import com.iloire.watchmen.models.ServiceReport;
 import com.iloire.watchmen.models.Status;
 
@@ -17,6 +18,7 @@ import java.util.List;
 
 public class ServiceReportListAdapter extends ArrayAdapter<ServiceReport> {
 
+    // TODO: extract colors to resources
     private final int errorColor = Color.rgb(208, 68, 55); // AUI
     private final int okColor = Color.rgb(20, 137, 44); // AUI
 
@@ -31,9 +33,8 @@ public class ServiceReportListAdapter extends ArrayAdapter<ServiceReport> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.service_list_item, parent, false);
         }
 
-        // icon
-        ImageView imageView =  (ImageView) convertView.findViewById(R.id.serviceStatusImageView);
-        setIcon(serviceReport.getStatus(), imageView);
+        // status icon (up/down)
+        setIcon(serviceReport.getStatus(), (ImageView) convertView.findViewById(R.id.serviceStatusImageView));
 
         // uptime
         TextView tvUptime = (TextView) convertView.findViewById(R.id.serviceUptimeTextView);
@@ -42,6 +43,15 @@ public class ServiceReportListAdapter extends ArrayAdapter<ServiceReport> {
         // name
         TextView tvServiceName = (TextView) convertView.findViewById(R.id.serviceItemTextView);
         tvServiceName.setText(serviceReport.getService().getName());
+
+        // downtime
+        TextView tvServiceDowntime = (TextView) convertView.findViewById(R.id.serviceDowntimeTextView);
+        long downtime = serviceReport.getStatus().getLast24Hours().getDowntime();
+        if (downtime > 0) {
+            tvServiceDowntime.setText(Time.getHumanizedOutageDuration(downtime) + " down");
+        } else {
+            tvServiceDowntime.setVisibility(View.INVISIBLE);
+        }
 
         return convertView;
     }

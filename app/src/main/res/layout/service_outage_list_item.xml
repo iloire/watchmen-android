@@ -2,8 +2,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="horizontal" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingTop="4dp"
-    android:paddingBottom="4dp">
+    android:paddingTop="5dp"
+    android:paddingBottom="5dp">
 
     <TextView
         android:layout_width="wrap_content"
@@ -22,7 +22,21 @@
         android:layout_height="wrap_content"
         android:textColor="@android:color/holo_red_dark"
         android:textSize="14dp"
-        android:text="Timeout trying to connect with the server"
+        android:text="Timeout connecting to server"
+        android:layout_gravity="center"
+        android:layout_marginLeft="10dp"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:gravity="left"
+        android:width="150dp">
+    </TextView>
+
+    <TextView
+        android:id="@+id/textViewOutageDowntime"
+        android:layout_height="wrap_content"
+        android:textColor="@android:color/holo_red_dark"
+        android:textSize="14dp"
+        android:text="1 min"
         android:layout_gravity="center"
         android:layout_marginLeft="10dp"
         xmlns:android="http://schemas.android.com/apk/res/android"

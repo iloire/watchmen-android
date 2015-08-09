@@ -3,11 +3,14 @@ package com.iloire.watchmen.activities;
 import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
 import com.iloire.watchmen.R;
+import com.iloire.watchmen.Utilities.Time;
 import com.iloire.watchmen.adapters.ServiceReportOutagesListAdapter;
+import com.iloire.watchmen.models.Last24Hours;
 import com.iloire.watchmen.models.ServiceReport;
 import com.iloire.watchmen.service.WatchmenService;
 
@@ -32,16 +35,34 @@ public class ServiceReportDetailsActivity extends AppCompatActivity {
                 setTitle(serviceReport.getService().getName());
                 setContentView(R.layout.service_detail);
 
-                TextView tvServiceDetailsUptime = (TextView) findViewById(R.id.textServiceDetailsUptime);
-                tvServiceDetailsUptime.setText(String.valueOf(serviceReport.getStatus().getLast24Hours().getUptime()) + "%");
+                Last24Hours statusLast24Hours = serviceReport.getStatus().getLast24Hours();
 
-                TextView tvServiceDetailsLatency = (TextView) findViewById(R.id.textServiceDetailsLatency);
-                tvServiceDetailsLatency.setText(String.valueOf(serviceReport.getStatus().getLast24Hours().getLatency().getMean()) + " ms.");
+                // uptime
+                ((TextView) findViewById(R.id.textServiceDetailsUptime)).setText(String.valueOf(
+                        statusLast24Hours.getUptime()) + "%");
+
+                // latency
+                ((TextView) findViewById(R.id.textServiceDetailsLatency)).setText(String.valueOf(
+                        statusLast24Hours.getLatency().getMean()) + " ms.");;
+
+                // downtime
+                TextView tvServiceDowntime = (TextView) findViewById(R.id.textServiceDetailsDowntime);
+                long downtime = statusLast24Hours.getDowntime();
+                if (downtime > 0) {
+                    String downtimeStr = Time.getHumanizedOutageDuration(downtime);
+                    tvServiceDowntime.setText(downtimeStr);
+                } else {
+                    tvServiceDowntime.setText("0");
+                }
 
                 // outages list
-                ServiceReportOutagesListAdapter outagesAdapter = new ServiceReportOutagesListAdapter(c, serviceReport.getStatus().getLatestOutages());
-                ListView listView = (ListView) findViewById(R.id.listViewServiceDetailsErrors);
-                listView.setAdapter(outagesAdapter);
+                if (serviceReport.getStatus().getLatestOutages().size() > 0) {
+                    ServiceReportOutagesListAdapter outagesAdapter = new ServiceReportOutagesListAdapter(c, serviceReport.getStatus().getLatestOutages());
+                    ListView listView = (ListView) findViewById(R.id.listViewServiceDetailsErrors);
+                    listView.setAdapter(outagesAdapter);
+                } else {
+                    findViewById(R.id.textViewLatestOutagesCaption).setVisibility(View.INVISIBLE);
+                }
             }
 
             @Override

@@ -11,7 +11,6 @@ import android.widget.ListView;
 import com.iloire.watchmen.R;
 import com.iloire.watchmen.adapters.ServiceReportListAdapter;
 import com.iloire.watchmen.models.ServiceReport;
-import com.iloire.watchmen.models.Status;
 import com.iloire.watchmen.service.WatchmenService;
 
 import java.util.List;
@@ -38,6 +37,7 @@ public class ServiceReportListActivity extends AppCompatActivity {
                 ServiceReportListAdapter adapter = new ServiceReportListAdapter(c, serviceReports);
                 ListView listView = (ListView) findViewById(R.id.listView);
                 listView.setAdapter(adapter);
+
                 listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                         Intent intent = new Intent(c, ServiceReportDetailsActivity.class);

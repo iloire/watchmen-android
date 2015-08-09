@@ -8,6 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.TextView;
 
 import com.iloire.watchmen.R;
+import com.iloire.watchmen.Utilities.Time;
 import com.iloire.watchmen.models.Outage;
 
 import java.text.SimpleDateFormat;
@@ -28,11 +29,14 @@ public class ServiceReportOutagesListAdapter extends ArrayAdapter<Outage> {
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.service_outage_list_item, parent, false);
         }
 
-        TextView tvOutageTimestamp = (TextView) convertView.findViewById(R.id.textViewOutageTimestamp);
-        tvOutageTimestamp.setText(humanizeEpoch(outage.getTimestamp()));
+        ((TextView) convertView.findViewById(R.id.textViewOutageTimestamp)).setText(
+                Time.humanizeEpoch(outage.getTimestamp()));
 
-        TextView tvOutageError = (TextView) convertView.findViewById(R.id.textViewOutageError);
-        tvOutageError.setText(humanizeError(outage.getError()));
+        ((TextView) convertView.findViewById(R.id.textViewOutageError)).setText(
+                humanizeError(outage.getError()));
+
+        ((TextView) convertView.findViewById(R.id.textViewOutageDowntime)).setText(
+                Time.getHumanizedOutageDuration(outage.getDowntime()));
 
         return convertView;
     }
@@ -46,11 +50,5 @@ public class ServiceReportOutagesListAdapter extends ArrayAdapter<Outage> {
             errOutput += err.getCode().toString();
         }
         return errOutput;
-    }
-
-    private String humanizeEpoch(long unixTimeInMs){
-        Date dateTime = new java.util.Date((long) unixTimeInMs);
-        SimpleDateFormat df = new SimpleDateFormat("dd MMM HH:mm:ss");
-        return df.format(dateTime);
     }
 }

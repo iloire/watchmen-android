@@ -7,44 +7,60 @@
     android:paddingBottom="7dp">
 
     <ImageView
-        android:layout_width="50dp"
+        android:layout_width="30dp"
         android:layout_height="30dp"
         android:id="@+id/serviceStatusImageView"
         android:layout_gravity="center_vertical"
         android:src="@drawable/ic_check_circle_white"
         android:layout_marginLeft="5dp"
-        android:padding="4dp"
+        android:padding="6dp"
         android:background="#14892c"
         android:longClickable="false"
-        android:alpha="0.8" />
+        android:alpha="0.8"
+        android:layout_marginRight="5dp" />
 
     <TextView
-        android:layout_width="wrap_content"
+        android:layout_width="70dp"
         android:id="@+id/serviceUptimeTextView"
         android:layout_height="wrap_content"
         android:textColor="@android:color/holo_green_dark"
-        android:textSize="20dp"
+        android:textSize="18dp"
         android:gravity="center"
         android:layout_gravity="center_vertical|right"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_marginLeft="2dp"
         xmlns:android="http://schemas.android.com/apk/res/android"
-        android:text="100%"
-        android:minWidth="70dp">
+        android:text="100%">
     </TextView>
 
     <TextView
         android:id="@+id/serviceItemTextView"
         android:layout_height="wrap_content"
         android:textColor="@android:color/darker_gray"
-        android:textSize="20dp"
+        android:textSize="18dp"
         android:gravity="center"
-        android:layout_gravity="center"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
+        android:layout_gravity="center|left"
+        android:layout_marginLeft="5dp"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
-        android:text="microsoft.com">
+        android:text="microsoft.com"
+        android:singleLine="true"
+        android:width="120dp">
+    </TextView>
+
+    <TextView
+        android:id="@+id/serviceDowntimeTextView"
+        android:layout_height="wrap_content"
+        android:textColor="#d04437"
+        android:textSize="15dp"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_marginLeft="15dp"
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:text="1 min. down"
+        android:paddingLeft="3dp"
+        android:paddingRight="3dp"
+        android:singleLine="true">
     </TextView>
 
 </LinearLayout>
