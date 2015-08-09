@@ -33,10 +33,10 @@ public class ServiceReportDetailsActivity extends AppCompatActivity {
                 setContentView(R.layout.service_detail);
 
                 TextView tvServiceDetailsUptime = (TextView) findViewById(R.id.textServiceDetailsUptime);
-                tvServiceDetailsUptime.setText(String.valueOf(serviceReport.getStatus().getLast24Hours().getUptime()));
+                tvServiceDetailsUptime.setText(String.valueOf(serviceReport.getStatus().getLast24Hours().getUptime()) + "%");
 
                 TextView tvServiceDetailsLatency = (TextView) findViewById(R.id.textServiceDetailsLatency);
-                tvServiceDetailsLatency.setText(String.valueOf(serviceReport.getStatus().getLast24Hours().getLatency().getMean()));
+                tvServiceDetailsLatency.setText(String.valueOf(serviceReport.getStatus().getLast24Hours().getLatency().getMean()) + " ms.");
 
                 // outages list
                 ServiceReportOutagesListAdapter outagesAdapter = new ServiceReportOutagesListAdapter(c, serviceReport.getStatus().getLatestOutages());

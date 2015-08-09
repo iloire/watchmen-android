@@ -11,6 +11,7 @@ import android.widget.ListView;
 import com.iloire.watchmen.R;
 import com.iloire.watchmen.adapters.ServiceReportListAdapter;
 import com.iloire.watchmen.models.ServiceReport;
+import com.iloire.watchmen.models.Status;
 import com.iloire.watchmen.service.WatchmenService;
 
 import java.util.List;
