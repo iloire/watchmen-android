@@ -12,11 +12,12 @@ This is my first Android app so don't be too harsh.
 
 ## Attribution
 
-Icons: http://google.github.io/material-design-icons/#getting-icons
+- Icons: http://google.github.io/material-design-icons/#getting-icons
+- Chart library: https://github.com/PhilJay/MPAndroidChart
+- REST Client: https://github.com/square/retrofit 
 
 ## Roadmap
 
-- Latency chart
 - Google auth
 - Service list ordering
 - Background poll and notifications
