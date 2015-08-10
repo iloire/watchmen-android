@@ -7,9 +7,11 @@ import android.view.View;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.github.mikephil.charting.charts.LineChart;
 import com.iloire.watchmen.R;
 import com.iloire.watchmen.Utilities.Time;
 import com.iloire.watchmen.adapters.ServiceReportOutagesListAdapter;
+import com.iloire.watchmen.charts.LatencyChartDataBuilder;
 import com.iloire.watchmen.models.Last24Hours;
 import com.iloire.watchmen.models.ServiceReport;
 import com.iloire.watchmen.service.WatchmenService;
@@ -63,6 +65,11 @@ public class ServiceReportDetailsActivity extends AppCompatActivity {
                 } else {
                     findViewById(R.id.textViewLatestOutagesCaption).setVisibility(View.INVISIBLE);
                 }
+
+                // latency chart last 24 h.
+                LineChart chart = (LineChart) findViewById(R.id.chartServiceDetailsLatencyLast24Hours);
+                LatencyChartDataBuilder dataBuilder = new LatencyChartDataBuilder();
+                chart.setData(dataBuilder.getData(serviceReport.getStatus().getLast24Hours().getLatency().getList(), "HH:mm"));
             }
 
             @Override

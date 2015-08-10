@@ -6,9 +6,9 @@ import java.util.concurrent.TimeUnit;
 
 public class Time {
 
-    public static String humanizeEpoch(long unixTimeInMs){
-        Date dateTime = new java.util.Date((long) unixTimeInMs);
-        SimpleDateFormat df = new SimpleDateFormat("dd MMM HH:mm:ss");
+    public static String humanizeEpoch(long unixTimeInMs, String format){
+        Date dateTime = new java.util.Date(unixTimeInMs);
+        SimpleDateFormat df = new SimpleDateFormat(format);
         return df.format(dateTime);
     }
 

@@ -9,16 +9,15 @@ import javax.annotation.Generated;
 @Generated("org.jsonschema2pojo")
 public class Latency {
 
-    private java.util.List<com.iloire.watchmen.models.List> list = new ArrayList<com.iloire.watchmen.models.List>();
+    private java.util.List<LatencyRecord> list = new ArrayList<LatencyRecord>();
     private int mean;
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
     /**
      * 
      * @return
      *     The list
      */
-    public java.util.List<com.iloire.watchmen.models.List> getList() {
+    public java.util.List<LatencyRecord> getList() {
         return list;
     }
 
@@ -27,7 +26,7 @@ public class Latency {
      * @param list
      *     The list
      */
-    public void setList(java.util.List<com.iloire.watchmen.models.List> list) {
+    public void setList(java.util.List<LatencyRecord> list) {
         this.list = list;
     }
 
@@ -48,13 +47,4 @@ public class Latency {
     public void setMean(int mean) {
         this.mean = mean;
     }
-
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
-
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
-
 }

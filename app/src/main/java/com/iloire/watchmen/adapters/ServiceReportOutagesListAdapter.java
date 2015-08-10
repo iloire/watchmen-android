@@ -30,7 +30,7 @@ public class ServiceReportOutagesListAdapter extends ArrayAdapter<Outage> {
         }
 
         ((TextView) convertView.findViewById(R.id.textViewOutageTimestamp)).setText(
-                Time.humanizeEpoch(outage.getTimestamp()));
+                Time.humanizeEpoch(outage.getTimestamp(), "dd MMM HH:mm:ss"));
 
         ((TextView) convertView.findViewById(R.id.textViewOutageError)).setText(
                 humanizeError(outage.getError()));

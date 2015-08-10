@@ -100,6 +100,12 @@
         </LinearLayout>
     </LinearLayout>
 
+    <com.github.mikephil.charting.charts.LineChart
+        android:id="@+id/chartServiceDetailsLatencyLast24Hours"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:layout_margin="15dp" />
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
