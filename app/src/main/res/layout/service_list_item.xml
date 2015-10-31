@@ -37,14 +37,14 @@
         android:layout_height="wrap_content"
         android:textColor="@android:color/darker_gray"
         android:textSize="18dp"
-        android:gravity="center"
+        android:gravity="center|left"
         android:layout_gravity="center|left"
         android:layout_marginLeft="5dp"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
         android:text="microsoft.com"
         android:singleLine="true"
-        android:width="120dp">
+        android:layout_weight="1">
     </TextView>
 
     <TextView
@@ -52,15 +52,16 @@
         android:layout_height="wrap_content"
         android:textColor="#d04437"
         android:textSize="15dp"
-        android:gravity="center"
+        android:gravity="center|left"
         android:layout_gravity="center"
-        android:layout_marginLeft="15dp"
+        android:layout_marginLeft="10dp"
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="wrap_content"
         android:text="1 min. down"
         android:paddingLeft="3dp"
         android:paddingRight="3dp"
-        android:singleLine="true">
+        android:singleLine="true"
+        android:layout_marginRight="10dp">
     </TextView>
 
 </LinearLayout>
