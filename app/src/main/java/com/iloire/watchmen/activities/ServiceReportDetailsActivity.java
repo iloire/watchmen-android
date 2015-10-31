@@ -1,6 +1,8 @@
 package com.iloire.watchmen.activities;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -9,6 +11,7 @@ import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.iloire.watchmen.R;
+import com.iloire.watchmen.Settings;
 import com.iloire.watchmen.Utilities.Time;
 import com.iloire.watchmen.adapters.ServiceReportOutagesListAdapter;
 import com.iloire.watchmen.charts.LatencyChartDataBuilder;
@@ -32,6 +35,7 @@ public class ServiceReportDetailsActivity extends AppCompatActivity {
 
         WatchmenService service = new WatchmenService();
         service.getService(id, new Callback<ServiceReport>() {
+
             @Override
             public void success(ServiceReport serviceReport, Response response) {
                 setTitle(serviceReport.getService().getName());
@@ -74,12 +78,16 @@ public class ServiceReportDetailsActivity extends AppCompatActivity {
 
             @Override
             public void failure(RetrofitError error) {
-                setTitle("Error");
-                // TODO proper err handling
-                System.err.println("=============================================");
-                System.out.println("Error retrieving service report details (retrofit)");
+                new AlertDialog.Builder(c)
+                        .setTitle("Network error")
+                        .setMessage("Error connecting to " + Settings.getServiceBaseUrl())
+                        .setPositiveButton(android.R.string.yes, new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {}
+                        })
+                        .setIcon(android.R.drawable.ic_dialog_alert)
+                        .show();
+
                 System.out.println(error);
-                System.err.println("=============================================");
             }
         });
     }
